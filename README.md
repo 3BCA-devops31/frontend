@@ -1,3 +1,4 @@
+
 # Diet & Lifestyle Tracker – Frontend
 
 Project ID: dietandlifestyle
@@ -77,6 +78,7 @@ Production-ready optimized build
 
 ##<img width="1920" height="1080" alt="Screenshot 2026-02-09 123744" src="https://github.com/user-attachments/assets/9daf70cc-cf24-4343-ba30-b282e4fc25be" />
 <img width="1024" height="207" alt="1000043557" src="https://github.com/user-attachments/assets/8db10e8b-7938-4585-8c36-7bca879c2673" />
+<img width="1920" height="1080" alt="Screenshot 2026-02-09 104905" src="https://github.com/user-attachments/assets/0b30c642-d18a-4d2e-8158-c4b9363227ff" />
  Future Improvements
 
 Authentication and user profiles
