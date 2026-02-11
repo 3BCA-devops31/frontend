@@ -90,5 +90,6 @@ Improved accessibility (ARIA enhancements)
 Enhanced UI/UX design
 
 Progressive Web App (PWA) support
-[Diet-and-Lifestyle-Tracker.pptx](https://github.com/user-attachments/files/25214732/Diet-and-Lifestyle-Tracker.pptx)
+[diet and lifestyle ppt.pptx](https://github.com/user-attachments/files/25225483/diet.and.lifestyle.ppt.pptx)
+
 
