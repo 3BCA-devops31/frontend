@@ -10,7 +10,7 @@ const dietService = {
   },
 
   createMeal: async (dietRecord) => {
-    const response = await axios.post(`${API_BASE_URL}/diet/saveMeal`, dietRecord);
+      const response = await axios.post(`${API_BASE_URL}/diet/saveMeal`, dietRecord);
     return response.data;
   },
 
