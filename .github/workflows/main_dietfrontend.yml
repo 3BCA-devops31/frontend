@@ -48,12 +48,18 @@ jobs:
         with:
           name: frontend-dist
 
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_9FB7D01F462744FA8EE9903F9ACCF794 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_25766BE5058D47F2BD65525B561DDF30 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_5353E6C33D7544E3BA87B8A3664D6EEC }}
+
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          app-name: 'dietfrontend'
           slot-name: 'Production'
           package: .
           startup-command: 'pm2 serve /home/site/wwwroot --no-daemon --spa'
