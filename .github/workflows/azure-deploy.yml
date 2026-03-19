@@ -1,4 +1,4 @@
-name: Build and Deploy Frontend to Azure
+name: Manual Fallback - Container Deploy Frontend to Azure
 
 on:
   workflow_dispatch:
