@@ -7,14 +7,6 @@ const todayISO = () => new Date().toISOString().split('T')[0];
 const ACTIVITY_OPTIONS = ['Walking', 'Running', 'Swimming', 'Yoga'];
 const cardClass = 'card shadow-sm border-0 h-100';
 const formatShortDate = (date) => new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-const secureRandomIndex = (length) => {
-  if (length <= 0) return 0;
-  const cryptoApi = globalThis.crypto;
-  if (!cryptoApi?.getRandomValues) return Date.now() % length;
-  const array = new Uint32Array(1);
-  cryptoApi.getRandomValues(array);
-  return array[0] % length;
-};
 
 const mealHeaderStyle = {
   backgroundColor: '#0f8a3d',
@@ -341,7 +333,9 @@ function App() {
   const totalExerciseMinutes = exercises.reduce((sum, exercise) => sum + Number(exercise.minutes || 0), 0);
   const totalExercises = exercises.length;
   const tips = ['Drink more water', 'Eat fruits daily', 'Avoid junk food', 'Exercise regularly'];
-  const randomTip = tips[secureRandomIndex(tips.length)];
+  const randomBuffer = new Uint32Array(1);
+  globalThis.crypto.getRandomValues(randomBuffer);
+  const randomTip = tips[randomBuffer[0] % tips.length];
 
   const latestMeal = meals.reduce((latest, meal) => (!latest || new Date(meal.date) > new Date(latest.date) ? meal : latest), null);
   const latestExercise = exercises.reduce((latest, exercise) => (!latest || new Date(exercise.date) > new Date(latest.date) ? exercise : latest), null);

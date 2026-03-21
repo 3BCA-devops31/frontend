@@ -25,7 +25,9 @@ describe("App Component", () => {
     render(<App />);
     await waitFor(() => {
       const todayCaloriesElement = screen.getByText("Today Calories");
+      const tipElement = screen.getByText(/Tip:/i);
       expect(todayCaloriesElement).toBeTruthy();
+      expect(tipElement).toBeTruthy();
     });
   });
 });
