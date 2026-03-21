@@ -325,9 +325,15 @@ function App() {
   };
 
   const totalCalories = meals.reduce((sum, meal) => sum + Number(meal.calories || 0), 0);
+  const todayCalories = meals
+    .filter((meal) => meal.date === todayISO())
+    .reduce((sum, meal) => sum + Number(meal.calories || 0), 0);
+  const todayMeals = meals.filter((meal) => meal.date === todayISO()).length;
   const totalMeals = meals.length;
   const totalExerciseMinutes = exercises.reduce((sum, exercise) => sum + Number(exercise.minutes || 0), 0);
   const totalExercises = exercises.length;
+  const tips = ['Drink more water', 'Eat fruits daily', 'Avoid junk food', 'Exercise regularly'];
+  const randomTip = tips[Math.floor(Math.random() * tips.length)];
 
   const latestMeal = meals.reduce((latest, meal) => (!latest || new Date(meal.date) > new Date(latest.date) ? meal : latest), null);
   const latestExercise = exercises.reduce((latest, exercise) => (!latest || new Date(exercise.date) > new Date(latest.date) ? exercise : latest), null);
@@ -369,11 +375,17 @@ function App() {
                   <div>
                     <p className="section-eyebrow mb-1">Dashboard</p>
                     <h4 className="mb-0">Snapshot</h4>
+                    <p className="mb-0 text-muted small">Tip: {randomTip}</p>
                   </div>
                   <div className="text-muted small">Updated {new Date().toLocaleString()}</div>
                 </div>
 
                 <div className="stats-grid">
+                  <div className="stat-card">
+                    <div className="stat-label">Today Calories</div>
+                    <div className="stat-value text-success">{todayCalories.toLocaleString()} kcal</div>
+                    <div className="stat-sub">From {todayMeals || 'no'} meals today</div>
+                  </div>
                   <div className="stat-card">
                     <div className="stat-label">Total Calories</div>
                     <div className="stat-value text-success">{totalCalories.toLocaleString()} kcal</div>

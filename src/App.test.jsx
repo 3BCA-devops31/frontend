@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { render } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import App from "./App";
 
 // Mock default-exported diet service used by App.jsx
@@ -21,8 +21,11 @@ vi.mock("./services/dietService", () => {
 });
 
 describe("App Component", () => {
-  it("renders without crashing", () => {
+  it("renders without crashing and displays Today Calories", async () => {
     render(<App />);
-    expect(true).toBe(true);
+    await waitFor(() => {
+      const todayCaloriesElement = screen.getByText("Today Calories");
+      expect(todayCaloriesElement).toBeTruthy();
+    });
   });
 });
